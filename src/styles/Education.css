@@ -1,0 +1,107 @@
+/* src/styles/Education.css */
+.education-section {
+  background-color: #0a0a0a; /* Match skills section for consistency or choose new */
+  color: #e7e7e7;
+}
+
+.education-timeline {
+  position: relative;
+  max-width: 800px; /* Max width for the timeline */
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* The vertical line for the timeline */
+.education-timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px; /* Position of the line */
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #7f42a7; /* Purple line */
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.5rem; /* Space between items */
+  padding-left: 50px; /* Space for the line and dot */
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* The dot on the timeline */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 10px; /* Align with the main line's center (20px - (16px/2) - 2px border) */
+  top: 5px; /* Adjust vertical alignment of the dot */
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #00ffff; /* Cyan dot */
+  border: 2px solid #0a0a0a; /* Match section background for "cutout" effect */
+  z-index: 1; /* Above the line */
+}
+
+.timeline-content {
+  background-color: #1c1c1c; /* Card background */
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  position: relative; /* For pseudo-elements if needed */
+}
+
+.education-degree {
+  font-size: 1.3rem;
+  color: #00ffff; /* Cyan for degree */
+  margin-bottom: 0.5rem;
+}
+
+.education-institution {
+  font-size: 1.1rem;
+  color: #c0c0c0; /* Lighter gray for institution */
+  margin-bottom: 0.3rem;
+  font-style: italic;
+}
+
+.education-year {
+  display: inline-block;
+  background-color: #7f42a7; /* Purple accent for year */
+  color: #fff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.education-details {
+  font-size: 0.95rem;
+  color: #a0a0a0;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments for Education Timeline */
+@media (max-width: 768px) {
+  .education-timeline::before {
+    left: 10px; /* Adjust line position for smaller screens */
+  }
+  .timeline-item {
+    padding-left: 35px; /* Adjust padding for items */
+  }
+  .timeline-item::before {
+    left: 2px; /* Adjust dot position */
+    width: 14px;
+    height: 14px;
+  }
+  .education-degree {
+    font-size: 1.2rem;
+  }
+  .education-institution {
+    font-size: 1rem;
+  }
+}

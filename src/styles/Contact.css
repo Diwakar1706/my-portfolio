@@ -1,0 +1,115 @@
+/* src/styles/Contact.css */
+.contact-section {
+  background-color: #111; /* Match projects section or choose new */
+  color: #e7e7e7;
+  padding-bottom: 100px; /* Extra padding at bottom */
+}
+
+.contact-intro {
+  margin-bottom: 2.5rem;
+  font-size: 1.2rem;
+  color: #c0c0c0;
+}
+
+.contact-form {
+  background-color: #1e1e1e;
+  padding: 2.5rem; /* More padding */
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 650px; /* Max width for the form */
+  margin: 0 auto 2rem auto; /* Center form and add margin below */
+}
+
+.form-group {
+  margin-bottom: 1.5rem; /* Space between form groups */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #00ffff; /* Cyan for labels */
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem; /* Comfortable padding */
+  border-radius: 8px;
+  border: 1px solid #444; /* Subtle border */
+  background-color: #2a2a2a; /* Darker input background */
+  color: #e7e7e7;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #7f42a7; /* Purple border on focus */
+  box-shadow: 0 0 0 3px rgba(127, 66, 167, 0.3); /* Purple glow on focus */
+}
+
+.form-group textarea {
+  resize: vertical; /* Allow vertical resize, no horizontal */
+  min-height: 120px;
+}
+
+.contact-submit-btn {
+  width: 100%;
+  padding: 0.9rem; /* Larger submit button */
+  font-size: 1.1rem;
+  margin-top: 0.5rem; /* Space above submit button */
+}
+.contact-submit-btn:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+.submit-message {
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 5px;
+}
+.submit-message.success {
+    background-color: rgba(0, 255, 0, 0.1);
+    color: #0f0;
+    border: 1px solid #0f0;
+}
+.submit-message.error {
+    background-color: rgba(255, 0, 0, 0.1);
+    color: #f00;
+    border: 1px solid #f00;
+}
+
+
+.contact-details {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.contact-details p {
+  font-size: 1.1rem;
+  color: #c0c0c0;
+  margin-bottom: 0.5rem;
+}
+
+.contact-details a {
+  color: #00ffff; /* Cyan for links */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-details a:hover {
+  color: #7f42a7; /* Purple on hover */
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 2rem;
+  }
+}

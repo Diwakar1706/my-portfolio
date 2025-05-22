@@ -1,0 +1,216 @@
+/* src/styles/About.css */
+/* Adapting your existing styles for the About section */
+
+.about-section {
+  padding: 60px 0; /* Adjust padding as needed, less than generic .section if header is tall */
+  min-height: 90vh; /* Ensure it takes up good space */
+  display: flex; /* Override generic .section display if needed for this specific layout */
+  align-items: center; /* Vertically center the content of about-main-section */
+  justify-content: center; /* Horizontally center */
+  overflow: hidden; /* Prevent robot from causing overflow if positioned absolutely */
+  position: relative; /* For positioning children if necessary */
+}
+
+.about-main-section {
+  display: flex;
+  flex-direction: row; /* Default: text, image, robot in a row */
+  align-items: center; /* Align items vertically in the center */
+  justify-content: space-between; /* Distribute space */
+  padding: 2rem 5rem; /* Original padding */
+  flex-wrap: nowrap; /* Prevent wrapping by default, manage responsiveness below */
+  gap: 2rem; /* Gap between flex items */
+  width: 100%;
+  max-width: 1400px; /* Max width for this specific layout */
+  margin: 0 auto; /* Center it */
+}
+
+.about-content {
+  flex: 1.2; /* Give text content a bit more space */
+  min-width: 300px; /* Minimum width before wrapping or shrinking too much */
+  max-width: 450px; /* Max width for text content */
+  z-index: 2; /* Ensure text is above any potential overlaps from robot */
+}
+
+.tag-box-about {
+  width: 18rem;
+  height: 2.5rem;
+  border-radius: 50px;
+  background: linear-gradient(to right, #656565, #7f42a7, #6600c5, #5300a0, #757575, #656565);
+  background-size: 200%;
+  animation: animationGradientAbout 2.5s linear infinite;
+  box-shadow: 0 0 15px white;
+  position: relative;
+}
+
+.tag-about {
+  position: absolute;
+  inset: 3px;
+  background-color: black;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #e7e7e7;
+  transition: color 0.3s ease;
+}
+.tag-about:hover {
+  color: #7f42a7;
+}
+
+@keyframes animationGradientAbout {
+  to {
+    background-position: 200%;
+  }
+}
+
+.about-h1 {
+  font-size: 3.5rem; /* Original size */
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin: 2rem 0 1rem;
+  line-height: 1.2;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(128, 128, 128, 0.418);
+}
+
+.description-about {
+  color: #b0b0b0; /* Slightly lighter gray */
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 100%; /* Allow it to fill its container */
+}
+
+.buttons-about {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+/* Button styles are now global in App.css, but you can override here if needed */
+/* .btn-dwn-resume, .btn-hire specific styles if any */
+
+
+.profile-image-about {
+  flex-shrink: 0; /* Prevent image from shrinking */
+  /* margin-top: -200px; /* Original negative margin, adjust as needed for React layout */
+  /* This negative margin might be tricky with flexbox alignment. Consider relative positioning or adjusting flex alignment. */
+  /* For now, let's rely on flex alignment. */
+  display: flex; /* To center the image if it's smaller than the container */
+  justify-content: center;
+  align-items: center;
+  flex: 0.8; /* Relative size to other flex items */
+  max-width: 280px; /* Control max size */
+}
+
+.profile-image-about img {
+  width: 240px; /* Original size */
+  height: 240px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.3),
+    0 8px 15px rgba(0, 0, 0, 0.2),
+    0 15px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d; /* For 3D hover effect */
+}
+
+.profile-image-about img:hover {
+  transform: perspective(600px) rotateY(10deg) rotateX(5deg) scale(1.05);
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.4),
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 30px 60px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.robot-wrapper-about {
+  flex: 1; /* Takes up remaining space */
+  max-width: 500px; /* Max width for robot */
+  min-width: 300px; /* Min width for robot */
+  height: 500px; /* Fixed height for spline viewer container */
+  /* Your original CSS had the robot absolutely positioned to hide watermark.
+     If that's still needed, you'd apply:
+     position: absolute;
+     top: 0; (or adjust)
+     right: -30%; (or adjust)
+     This will take it out of the flex flow.
+     For this example, I'm keeping it in the flex flow.
+     If you make it absolute, ensure .about-section or .about-main-section is its positioning context.
+  */
+  position: relative; /* If you need to precisely position spline-viewer within it */
+}
+
+.robot-wrapper-about spline-viewer {
+  width: 100%;
+  height: 100%; /* Fill the wrapper */
+  /* If using absolute positioning for watermark hiding:
+     position: absolute;
+     top: 0;
+     right: -X%; (adjust X to hide watermark)
+     width: Y%; (adjust Y to control visible width)
+     height: 100%;
+  */
+}
+
+/* Responsive adjustments for About Section */
+@media (max-width: 1200px) {
+  .about-main-section {
+    padding: 2rem 3rem;
+  }
+  .about-h1 {
+    font-size: 3rem;
+  }
+}
+
+
+@media (max-width: 992px) { /* Tablet and smaller */
+  .about-main-section {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items when stacked */
+    text-align: center;
+    padding: 2rem 1rem;
+    gap: 3rem; /* Increase gap when stacked */
+  }
+  .about-content {
+    max-width: 600px; /* Allow text to be wider when stacked */
+    order: 1; /* Text first */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center tag-box and buttons */
+  }
+  .profile-image-about {
+    order: 2; /* Image second */
+    margin-top: 0; /* Reset negative margin */
+  }
+  .robot-wrapper-about {
+    order: 3; /* Robot third */
+    width: 100%; /* Full width for robot on smaller screens */
+    max-width: 400px; /* Control its size */
+    height: 400px;
+  }
+  .about-h1 {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 576px) { /* Mobile */
+  .about-h1 {
+    font-size: 2.2rem;
+  }
+  .description-about {
+    font-size: 1rem;
+  }
+  .tag-box-about {
+    width: 16rem; /* Adjust tag box size */
+    height: 2.2rem;
+  }
+  .profile-image-about img {
+    width: 200px;
+    height: 200px;
+  }
+  .robot-wrapper-about {
+    height: 350px;
+  }
+}
