@@ -1,69 +1,67 @@
 /* src/styles/Skills.css */
-.skills-section {
-  background-color: #0a0a0a; /* Slightly different background for variation */
+.skills-section-react { /* Specific class */
+  background-color: #0a0a0a; 
   color: #e7e7e7;
 }
 
-.skills-grid {
+.skills-grid-react { /* Specific class */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   width: 100%;
-  max-width: 1000px; /* Max width for the grid */
-  padding: 0 1rem; /* Padding for the grid container */
+  max-width: 1000px; 
+  padding: 0 1rem; 
 }
 
-.skill-item {
-  background-color: #1c1c1c; /* Darker card background */
+.skill-item-react { /* Specific class */
+  background-color: #1c1c1c; 
   padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; 
 }
 
-.skill-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(127, 66, 167, 0.3); /* Purple glow on hover */
+.skill-item-react:hover {
+  transform: translateY(-6px) scale(1.03); 
+  box-shadow: 0 8px 25px rgba(127, 66, 167, 0.4); 
 }
 
-.skill-name {
+.skill-name-react { /* Specific class */
   font-size: 1.2rem;
-  color: #00ffff; /* Cyan for skill names */
+  color: #00ffff; 
   margin-bottom: 0.75rem;
 }
 
-.skill-level-container {
-  background-color: #333; /* Background of the progress bar track */
+.skill-level-container-react { /* Specific class */
+  background-color: #333; 
   border-radius: 25px;
-  height: 20px; /* Height of the progress bar */
-  overflow: hidden; /* Ensures the inner bar stays within rounded corners */
+  height: 20px; 
+  overflow: hidden; 
   width: 100%;
 }
 
-.skill-level-bar {
-  background: linear-gradient(to right, #7f42a7, #00ffff); /* Gradient for progress */
+.skill-level-bar-react { /* Specific class */
+  background: linear-gradient(to right, #7f42a7, #00ffff); 
   height: 100%;
   border-radius: 25px;
   display: flex;
   align-items: center;
-  justify-content: flex-end; /* Position percentage text to the right */
-  color: #fff;
+  justify-content: flex-end; 
+  color: #fff; 
   font-weight: 500;
   font-size: 0.8rem;
-  /* Width is set by inline style via JS/GSAP */
-  transition: width 0.5s ease-out; /* Fallback CSS transition */
+  transition: width 1s ease-in-out 0.1s; /* Added small delay */
 }
 
-.skill-percentage {
-    padding-right: 10px; /* Space for percentage text */
-    color: #111; /* Dark text for better contrast on gradient */
+.skill-percentage-react { /* Specific class */
+    padding-right: 10px; 
+    color: #111; 
     font-weight: bold;
+    opacity: 1; /* Make it visible as bar animates */
 }
-
 
 @media (max-width: 768px) {
-  .skills-grid {
-    grid-template-columns: 1fr; /* Single column on smaller screens */
+  .skills-grid-react {
+    grid-template-columns: 1fr; 
   }
 }
-

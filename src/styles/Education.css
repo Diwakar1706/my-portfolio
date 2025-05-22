@@ -1,107 +1,125 @@
 /* src/styles/Education.css */
-.education-section {
-  background-color: #0a0a0a; /* Match skills section for consistency or choose new */
+.education-section-react { /* Specific class */
+  background-color: #0a0a0a; 
   color: #e7e7e7;
 }
 
-.education-timeline {
+.education-timeline-react { /* Specific class */
   position: relative;
-  max-width: 800px; /* Max width for the timeline */
+  max-width: 800px; 
   width: 100%;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 2rem 1rem; 
 }
 
-/* The vertical line for the timeline */
-.education-timeline::before {
+.education-timeline-react::before {
   content: '';
   position: absolute;
-  left: 20px; /* Position of the line */
+  left: 20px; 
   top: 0;
   bottom: 0;
   width: 4px;
-  background: #7f42a7; /* Purple line */
+  background: #7f42a7; 
   border-radius: 2px;
 }
 
-.timeline-item {
+.timeline-item-react { /* Specific class */
   position: relative;
-  margin-bottom: 2.5rem; /* Space between items */
-  padding-left: 50px; /* Space for the line and dot */
+  margin-bottom: 2.5rem; 
+  padding-left: 50px; 
+  transition: transform 0.3s ease-out; 
 }
 
-.timeline-item:last-child {
+.timeline-item-react:hover {
+  transform: translateX(5px); 
+}
+
+.timeline-item-react:last-child {
   margin-bottom: 0;
 }
 
-/* The dot on the timeline */
-.timeline-item::before {
+.timeline-item-react::before {
   content: '';
   position: absolute;
-  left: 10px; /* Align with the main line's center (20px - (16px/2) - 2px border) */
-  top: 5px; /* Adjust vertical alignment of the dot */
+  left: 10px; 
+  top: 5px; 
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: #00ffff; /* Cyan dot */
-  border: 2px solid #0a0a0a; /* Match section background for "cutout" effect */
-  z-index: 1; /* Above the line */
+  background-color: #00ffff; 
+  border: 2px solid #0a0a0a; 
+  z-index: 1; 
+  transition: transform 0.3s ease-out, background-color 0.3s ease-out;
 }
 
-.timeline-content {
-  background-color: #1c1c1c; /* Card background */
+.timeline-item-react:hover::before {
+  transform: scale(1.2);
+  background-color: #50fdfd; 
+}
+
+.timeline-content-react { /* Specific class */
+  background-color: #1c1c1c; 
   padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
-  position: relative; /* For pseudo-elements if needed */
+  position: relative; 
+  transition: box-shadow 0.3s ease-out, background-color 0.3s ease-out;
 }
 
-.education-degree {
+.timeline-item-react:hover .timeline-content-react {
+  box-shadow: 0 5px 15px rgba(0, 255, 255, 0.15);
+  background-color: #222222; 
+}
+
+.education-degree-react { /* Specific class */
   font-size: 1.3rem;
-  color: #00ffff; /* Cyan for degree */
+  color: #00ffff; 
   margin-bottom: 0.5rem;
 }
 
-.education-institution {
+.education-institution-react { /* Specific class */
   font-size: 1.1rem;
-  color: #c0c0c0; /* Lighter gray for institution */
+  color: #c0c0c0; 
   margin-bottom: 0.3rem;
   font-style: italic;
 }
 
-.education-year {
+.education-year-react { /* Specific class */
   display: inline-block;
-  background-color: #7f42a7; /* Purple accent for year */
+  background-color: #7f42a7; 
   color: #fff;
   padding: 0.2rem 0.6rem;
   border-radius: 15px;
   font-size: 0.85rem;
   margin-bottom: 0.75rem;
+  transition: background-color 0.3s ease;
+}
+.timeline-item-react:hover .education-year-react {
+  background-color: #9d5cd0; 
 }
 
-.education-details {
+.education-details-react { /* Specific class */
   font-size: 0.95rem;
   color: #a0a0a0;
   line-height: 1.6;
 }
 
-/* Responsive adjustments for Education Timeline */
 @media (max-width: 768px) {
-  .education-timeline::before {
-    left: 10px; /* Adjust line position for smaller screens */
+  .education-timeline-react::before {
+    left: 10px; 
   }
-  .timeline-item {
-    padding-left: 35px; /* Adjust padding for items */
+  .timeline-item-react {
+    padding-left: 35px; 
   }
-  .timeline-item::before {
-    left: 2px; /* Adjust dot position */
+  .timeline-item-react::before {
+    left: 2px; 
     width: 14px;
     height: 14px;
   }
-  .education-degree {
+  .education-degree-react {
     font-size: 1.2rem;
   }
-  .education-institution {
+  .education-institution-react {
     font-size: 1rem;
   }
 }

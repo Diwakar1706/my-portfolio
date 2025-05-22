@@ -8,75 +8,80 @@
 body, html {
   background-color: black;
   color: #e7e7e7;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  overflow-x: hidden; /* Prevent horizontal scroll on body */
-  scroll-behavior: smooth; /* Smooth scroll for anchor links if not handled by react-scroll */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overflow-x: hidden; 
+  scroll-behavior: smooth; 
   line-height: 1.5;
+  height: 100%; 
 }
 
 .app-container {
-  position: relative; /* For positioning background elements */
+  position: relative; 
   width: 100%;
   min-height: 100vh;
-  overflow: hidden; /* To contain absolute positioned children like gradient */
+  /* overflow: hidden; -- Removing this to ensure absolutely positioned elements like the robot are not clipped if they extend outside */
 }
 
-/* Background gradient image for the entire app */
 .image-gradient-app {
-  position: absolute;
+  position: fixed; /* Changed to fixed to ensure it covers viewport during scroll */
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; /* Make it cover the viewport height if content is shorter */
-  object-fit: cover; /* Cover the area */
+  height: 100%; /* Cover full viewport */
+  object-fit: cover; /* Ensure image covers the area */
   opacity: 0.5;
-  z-index: -2; /* Behind everything */
+  z-index: -2;
 }
 
-/* Optional blur layer for the entire app */
-.layer-blur-app {
-  height: 0; /* This was an interesting effect, keeping it */
+.layer-blur-app { 
+  height: 0; 
   width: 30rem;
-  position: absolute;
+  position: fixed; /* Changed to fixed for consistent background effect */
   top: 20%;
   right: 0;
   box-shadow: 0 0 700px 15px white;
   rotate: -30deg;
-  z-index: -1; /* Behind content, above gradient */
+  z-index: -1; 
 }
 
-/* Main container for all sections, similar to your original .container */
-.container-app {
+.container-app { 
   width: 100%;
   margin: 0 auto;
-  padding: 0 2rem; /* Overall padding for content area */
-  position: relative; /* For stacking context if needed */
-  z-index: 1; /* Above background elements */
+  padding: 0 2rem; 
+  position: relative; /* Content should be relative to flow normally */
+  z-index: 1; 
 }
 
-
-/* General section styling */
 .section {
-  padding: 80px 0; /* Top/bottom padding for sections */
-  min-height: 80vh; /* Make sections take up significant viewport height */
+  padding: 60px 0; 
+  min-height: 80vh; 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  opacity: 0; /* Initial state for GSAP animation */
-  transform: translateY(50px); /* Initial state for GSAP animation */
+  opacity: 1; 
+  visibility: visible; 
+  margin-bottom: 40px; 
+  position: relative; /* Add relative position here for sections that might contain absolutely positioned elements */
 }
 
-.section h2 {
+.section h2 { 
   font-size: 2.5rem;
   color: #fff;
-  margin-bottom: 30px;
+  margin-bottom: 40px; 
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
+  transition: color 0.3s ease, text-shadow 0.3s ease; 
 }
 
-.section p {
+.section h2:hover {
+  color: #00ffff; 
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.section p { 
   font-size: 1.1rem;
   color: #ccc;
   max-width: 700px;
@@ -84,51 +89,55 @@ body, html {
   line-height: 1.7;
 }
 
-/* Button styles (can be global or moved to specific components) */
 .btn {
   text-decoration: none;
   padding: 0.8rem 1.8rem;
   border-radius: 50px;
   font-size: 1.1rem;
   font-weight: 600;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  letter-spacing: 0.05em;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   display: inline-block;
   margin: 5px;
   cursor: pointer;
   border: none;
+  text-align: center;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .btn-primary {
-  background-color: lightgray;
+  background-color: lightgray; 
   color: black;
 }
-
 .btn-primary:hover {
-  background-color: gray;
-  transform: translateY(-2px);
+  background-color: gray; 
 }
 
 .btn-secondary {
+  border: 1px solid #2a2a2a; 
   color: white;
-  border: 1px solid #4a4a4a; /* Darker border for better visibility */
+  background-color: transparent;
 }
-
 .btn-secondary:hover {
-  background-color: #2a2a2a;
-  transform: translateY(-2px);
+  background-color: #1a1a1a; 
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .container-app {
     padding: 0 1rem;
   }
-
   .section h2 {
     font-size: 2rem;
   }
-
   .section p {
     font-size: 1rem;
+  }
+  .layer-blur-app { /* Adjust blur on smaller screens if needed */
+    width: 20rem;
+    box-shadow: 0 0 500px 10px white;
   }
 }
