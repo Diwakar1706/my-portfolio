@@ -35,8 +35,8 @@ const Projects = () => {
       description: 'An AI-powered tool that predicts plant diseases from leaf images using deep learning and provides recommendations.',
       image: aiCropImage,
       techStack: ['Python', 'Flask', 'TensorFlow', 'React'],
-      liveLink: '#',
-      repoLink: '#',
+      liveLink: 'https://diwakar1706.github.io/AI-CropTECH/',
+      repoLink: 'https://github.com/Diwakar1706/AI-CropTECH',
     },
   ];
 
