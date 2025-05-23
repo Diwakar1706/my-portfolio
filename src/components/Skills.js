@@ -1,38 +1,72 @@
-import React from 'react'; 
-import { Element } from 'react-scroll'; // For react-scroll navigation target
+import React from 'react';
+import { Element } from 'react-scroll';
 import '../styles/Skills.css';
 
-const Skills = () => {
-  const skillsData = [
-    { name: 'JavaScript (ES6+)', level: 90 },
-    { name: 'React & Redux', level: 85 },
-    { name: 'Node.js & Express', level: 80 },
-    { name: 'HTML5 & CSS3', level: 95 },
-    { name: 'Python', level: 75 },
-    { name: 'SQL & NoSQL (MongoDB)', level: 70 },
-    { name: 'Git & GitHub', level: 85 },
-    { name: 'RESTful APIs', level: 80 },
-    { name: 'DSA', level: 70 },
-  ];
+const skillsData = [
+  {
+    category: 'Frontend',
+    skills: [
+      { name: 'HTML5', logo: 'html5.svg' },
+      { name: 'CSS3', logo: 'css3.svg' },
+      { name: 'JavaScript', logo: 'javascript.svg' },
+      { name: 'React', logo: 'react.svg' },
+      { name: 'Redux', logo: 'redux.svg' },
+      { name: 'Tailwind', logo: 'tailwindcss.svg' },
+      { name: 'Next.js', logo: 'nextjs.svg' },
+    ],
+  },
+  {
+    category: 'Backend',
+    skills: [
+      { name: 'Node.js', logo: 'nodejs.svg' },
+      { name: 'MongoDB', logo: 'mongodb.svg' },
+      { name: 'REST API', logo: 'api.svg' },
+      { name: 'Firebase', logo: 'firebase.svg' },
+    ],
+  },
+  {
+    category: 'Languages',
+    skills: [
+      { name: 'Python', logo: 'python.svg' },
+      { name: 'C++', logo: 'cpp.svg' },
+      { name: 'Java', logo: 'java.svg' },
+      { name: 'JavaScript', logo: 'javascript.svg' },
+      
+    ],
+  },
+  {
+    category: 'Tools',
+    skills: [
+      { name: 'Git', logo: 'git.svg' },
+      { name: 'GitHub', logo: 'github.svg' },
+      { name: 'VS Code', logo: 'vscode.svg' },
+      { name: 'SQL', logo: 'sql.svg' },
+      { name: 'Postman', logo: 'postman.svg' },
+      { name: 'Docker', logo: 'docker.svg' },
+       { name: 'AWS', logo: 'aws.svg' },
+    ],
+  },
+];
 
+const Skills = () => {
   return (
-    // The 'name' prop here ("skills") is the target for the ScrollLink in Header.js
-    <Element name="skills" className="section skills-section-react"> 
-      <h2>My Skills</h2>
-      <div className="skills-grid-react"> 
-        {skillsData.map((skill) => (
-          <div key={skill.name} className="skill-item-react"> 
-            <h3 className="skill-name-react">{skill.name}</h3>
-            <div className="skill-level-container-react">
-              <div 
-                className="skill-level-bar-react" 
-                style={{ width: `${skill.level}%` }} 
-                aria-valuenow={skill.level}
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <span className="skill-percentage-react">{skill.level}%</span>
-              </div>
+    <Element name="skills" className="skills-section">
+      <h2 className="skills-title">My Skills</h2>
+      <div className="skills-ludo-grid">
+        {skillsData.map((group, index) => (
+          <div key={index} className="skill-box">
+            <h3 className="category-title">{group.category}</h3>
+            <div className="skills-matrix scrollable-matrix">
+              {group.skills.map((skill, idx) => (
+                <div key={idx} className="matrix-item">
+                  <img
+                    src={`/logos/${skill.logo}`}
+                    alt={skill.name}
+                    className="matrix-icon"
+                  />
+                  <span className="matrix-label">{skill.name}</span>
+                </div>
+              ))}
             </div>
           </div>
         ))}

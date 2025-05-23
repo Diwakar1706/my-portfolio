@@ -1,67 +1,149 @@
-/* src/styles/Skills.css */
-.skills-section-react { /* Specific class */
-  background-color: #0a0a0a; 
+.skills-section {
+  background: #0a0a0a;
   color: #e7e7e7;
+  padding: 2rem;
+  text-align: center;
 }
 
-.skills-grid-react { /* Specific class */
+.skills-title {
+  color: #00ffff;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.skills-ludo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-areas:
+    "left-top right-top"
+    "left-bottom right-bottom";
   gap: 2rem;
-  width: 100%;
-  max-width: 1000px; 
-  padding: 0 1rem; 
+  justify-content: center;
 }
 
-.skill-item-react { /* Specific class */
-  background-color: #1c1c1c; 
+.skill-box {
+  background-color: #161616;
+  border-radius: 12px;
   padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; 
+  width: 300px;
+  height: 370px;
+  box-shadow: 0 6px 15px rgba(0, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.6s ease both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.skill-item-react:hover {
-  transform: translateY(-6px) scale(1.03); 
-  box-shadow: 0 8px 25px rgba(127, 66, 167, 0.4); 
+.skill-box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(127, 66, 167, 0.3);
 }
 
-.skill-name-react { /* Specific class */
-  font-size: 1.2rem;
-  color: #00ffff; 
-  margin-bottom: 0.75rem;
+.skill-box:nth-child(1) { grid-area: left-top; }
+.skill-box:nth-child(2) { grid-area: right-top; }
+.skill-box:nth-child(3) { grid-area: left-bottom; }
+.skill-box:nth-child(4) { grid-area: right-bottom; }
+
+.category-title {
+  font-size: 1.3rem;
+  color: #7f42a7;
+  margin-bottom: 1rem;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+  border: none; /* Ensure no border shows */
 }
 
-.skill-level-container-react { /* Specific class */
-  background-color: #333; 
-  border-radius: 25px;
-  height: 20px; 
-  overflow: hidden; 
+
+
+.skills-matrix {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
   width: 100%;
 }
 
-.skill-level-bar-react { /* Specific class */
-  background: linear-gradient(to right, #7f42a7, #00ffff); 
-  height: 100%;
-  border-radius: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end; 
-  color: #fff; 
-  font-weight: 500;
-  font-size: 0.8rem;
-  transition: width 1s ease-in-out 0.1s; /* Added small delay */
+.scrollable-matrix {
+  max-height: 230px; /* Adjust this to fit inside the box */
+  overflow-y: auto;
+  padding-right: 5px;
 }
 
-.skill-percentage-react { /* Specific class */
-    padding-right: 10px; 
-    color: #111; 
-    font-weight: bold;
-    opacity: 1; /* Make it visible as bar animates */
+/* Custom scrollbar */
+.scrollable-matrix::-webkit-scrollbar {
+  width: 2px;
+}
+.scrollable-matrix::-webkit-scrollbar-thumb {
+  background-color: #7f42a7;
+  border-radius: 2px;
+}
+
+.matrix-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #222;
+  padding: 0.75rem;
+  border-radius: 1px;
+  transition: transform 0.3s ease;
+}
+
+.matrix-item:hover {
+  transform: scale(1.05);
+  background-color: #2c2c2c;
+}
+
+.matrix-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 4px #00ffff);
+}
+
+.matrix-label {
+  font-size: 0.85rem;
+  color: #e7e7e7;
+  text-align: center;
+  font-weight: 500;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @media (max-width: 768px) {
-  .skills-grid-react {
-    grid-template-columns: 1fr; 
+  .skills-ludo-grid {
+    grid-template-areas:
+      "left-top"
+      "right-top"
+      "left-bottom"
+      "right-bottom";
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .skill-box {
+    width: 90%;
+    height: auto;
+  }
+
+  .scrollable-matrix {
+    max-height: 300px;
+  }
+
+  .skills-matrix {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
+
+
+
+
