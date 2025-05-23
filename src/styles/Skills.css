@@ -48,12 +48,11 @@
   font-size: 1.3rem;
   color: #7f42a7;
   margin-bottom: 1rem;
-  padding: 0;
+  /* border-bottom: 2px solid #00ffff; */ /* Remove or comment this */
+  padding-bottom: 0.5rem;
   width: 100%;
   text-align: center;
-  border: none; /* Ensure no border shows */
 }
-
 
 
 .skills-matrix {

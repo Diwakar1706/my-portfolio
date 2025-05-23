@@ -1,17 +1,16 @@
-/* src/styles/Contact.css */
-.contact-section-react { /* Specific class */
+.contact-section-react {
   background-color: #111; 
   color: #e7e7e7;
   padding-bottom: 100px; 
 }
 
-.contact-intro-react { /* Specific class */
+.contact-intro-react {
   margin-bottom: 2.5rem;
   font-size: 1.2rem;
   color: #c0c0c0;
 }
 
-.contact-form-react { /* Specific class */
+.contact-form-react {
   background-color: #1e1e1e;
   padding: 2.5rem; 
   border-radius: 12px;
@@ -22,11 +21,10 @@
   transition: box-shadow 0.3s ease-out;
 }
 .contact-form-react:hover {
-    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.1);
 }
 
-
-.form-group-react { /* Specific class */
+.form-group-react {
   margin-bottom: 1.5rem; 
 }
 
@@ -62,36 +60,36 @@
   min-height: 120px;
 }
 
-.contact-submit-btn-react { /* Specific class, uses global .btn .btn-primary styles */
+.contact-submit-btn-react {
   width: 100%;
   padding: 0.9rem; 
   font-size: 1.1rem;
   margin-top: 0.5rem; 
 }
 .contact-submit-btn-react:disabled {
-    background-color: #555;
-    cursor: not-allowed;
+  background-color: #555;
+  cursor: not-allowed;
 }
 
-.submit-message-react { /* Specific class */
-    text-align: center;
-    margin-top: 1rem;
-    padding: 0.75rem;
-    border-radius: 5px;
-    font-weight: 500;
+.submit-message-react {
+  text-align: center;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 5px;
+  font-weight: 500;
 }
 .submit-message-react.success {
-    background-color: rgba(0, 255, 0, 0.15); 
-    color: #32cd32; 
-    border: 1px solid rgba(0, 255, 0, 0.3);
+  background-color: rgba(0, 255, 0, 0.15); 
+  color: #32cd32; 
+  border: 1px solid rgba(0, 255, 0, 0.3);
 }
 .submit-message-react.error {
-    background-color: rgba(255, 0, 0, 0.15); 
-    color: #ff4500; 
-    border: 1px solid rgba(255, 0, 0, 0.3);
+  background-color: rgba(255, 0, 0, 0.15); 
+  color: #ff4500; 
+  border: 1px solid rgba(255, 0, 0, 0.3);
 }
 
-.contact-details-react { /* Specific class */
+.contact-details-react {
   text-align: center;
   margin-top: 2.5rem;
 }

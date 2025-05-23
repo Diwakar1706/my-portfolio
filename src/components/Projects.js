@@ -1,50 +1,60 @@
-import React from 'react'; 
+import React, { useState } from 'react';
 import { Element } from 'react-scroll';
 import '../styles/Projects.css';
 
+// Importing local images
+import netflixImage from '../assets/netflix.png';
+import portfolioImage from '../assets/portfolio.png';
+import aiCropImage from '../assets/aicrop.png';
+
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+
   const projectData = [
     {
-      id: 'proj1-id-projects', 
-      title: 'E-commerce Platform',
-      description: 'A full-featured online shopping platform with user authentication, product listings, cart functionality, and payment integration.',
-      imageUrl: 'https://placehold.co/600x400/333/fff?text=Project+Alpha', 
-      techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'Stripe'],
-      liveLink: '#', 
-      repoLink: '#', 
+      id: 'proj1-id-projects',
+      title: 'Netflix Clone',
+      description: 'A fully responsive Netflix clone with authentication, movie browsing, search, and video streaming capabilities.',
+      image: netflixImage,
+      techStack: ['React', 'Firebase', 'TMDB API', 'CSS'],
+      liveLink: '#',
+      repoLink: '#',
     },
     {
       id: 'proj2-id-projects',
       title: 'My Portfolio',
-      description: '"A responsive and visually appealing personal portfolio website built using React, CSS, and JavaScript to showcase my skills, projects, and Education',
-      imageUrl: 'https://tse2.mm.bing.net/th?id=OIP.47WiAu3aBCrS3iBPO1Fd8gHaGS&pid=Api&P=0&h=180',
-      techStack: ['React', 'css', 'javascript'],
-      liveLink: '#',
-      repoLink: '#',
+      description: 'A responsive and visually appealing personal portfolio website built using React, CSS, and JavaScript to showcase my skills, projects, and education.',
+      image: portfolioImage,
+      techStack: ['React', 'CSS', 'JavaScript'],
+      liveLink: 'https://my-portfolio-five-delta-52.vercel.app',
+      repoLink: 'https://github.com/Diwakar1706/my-portfolio',
     },
     {
       id: 'proj3-id-projects',
-      title: 'Portfolio Website V1',
-      description: 'My previous personal portfolio website built with HTML, CSS, and vanilla JavaScript, showcasing earlier projects.',
-      imageUrl: 'https://placehold.co/600x400/555/fff?text=Project+Gamma',
-      techStack: ['HTML', 'CSS', 'JavaScript'],
+      title: 'AI Crop Disease Prediction',
+      description: 'An AI-powered tool that predicts plant diseases from leaf images using deep learning and provides recommendations.',
+      image: aiCropImage,
+      techStack: ['Python', 'Flask', 'TensorFlow', 'React'],
       liveLink: '#',
       repoLink: '#',
     },
   ];
-  
+
   return (
-    <Element name="projects" className="section projects-section-react"> {/* Added specific class */}
+    <Element name="projects" className="section projects-section-react">
       <h2>My Projects</h2>
-      <div className="projects-grid-react"> {/* Added specific class */}
+      <div className="projects-grid-react">
         {projectData.map((project) => (
-          <div key={project.id} className="project-card-react"> {/* Added specific class */}
+          <div
+            key={project.id}
+            className="project-card-react"
+            onClick={() => setSelectedProject(project)}
+          >
             <div className="project-image-container-react">
-              <img 
-                src={project.imageUrl} 
-                alt={project.title} 
+              <img
+                src={project.image}
+                alt={project.title}
                 className="project-image-react"
-                onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/600x400/777/eee?text=Image+Error"; }}
               />
             </div>
             <div className="project-info-react">
@@ -55,16 +65,38 @@ const Projects = () => {
                   <span key={i} className="tech-tag-react">{tech}</span>
                 ))}
               </div>
-              <div className="project-links-react">
-                {project.liveLink && project.liveLink !== '#' && 
-                  <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="btn btn-primary project-btn-react">View Live</a>}
-                {project.repoLink && project.repoLink !== '#' && 
-                  <a href={project.repoLink} target="_blank" rel="noopener noreferrer" className="btn btn-secondary project-btn-react">View Code</a>}
-              </div>
             </div>
           </div>
         ))}
       </div>
+
+      {selectedProject && (
+        <div className="project-popup-overlay">
+          <div className="project-popup-card">
+            <button className="project-popup-close" onClick={() => setSelectedProject(null)}>✕</button>
+            <div className="project-image-container-react">
+              <img
+                src={selectedProject.image}
+                alt={selectedProject.title}
+                className="project-image-react"
+              />
+            </div>
+            <div className="project-info-react">
+              <h3 className="project-title-react">{selectedProject.title}</h3>
+              <p className="project-description-react">{selectedProject.description}</p>
+              <div className="project-tech-stack-react">
+                {selectedProject.techStack.map((tech, i) => (
+                  <span key={i} className="tech-tag-react">{tech}</span>
+                ))}
+              </div>
+              <div className="project-links-react">
+                <a href={selectedProject.liveLink} target="_blank" rel="noopener noreferrer" className="btn btn-primary project-btn-react">View Live</a>
+                <a href={selectedProject.repoLink} target="_blank" rel="noopener noreferrer" className="btn btn-secondary project-btn-react">View Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </Element>
   );
 };

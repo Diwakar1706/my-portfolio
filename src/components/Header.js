@@ -2,6 +2,9 @@ import React from 'react';
 import { Link as ScrollLink } from 'react-scroll';
 import '../styles/Header.css'; 
 
+
+
+
 const Header = () => {
   const navItems = [
     { id: 'about', label: 'About' },
@@ -29,6 +32,7 @@ const Header = () => {
               {item.label}
             </ScrollLink>
           ))}
+        
         </nav>
         <div className="social-links-header-react"> 
           <a href="https://www.linkedin.com/in/diwakar-shaw-245567284/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">

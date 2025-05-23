@@ -1,5 +1,6 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
 import { Element } from 'react-scroll';
+import emailjs from '@emailjs/browser';
 import '../styles/Contact.css';
 
 const Contact = () => {
@@ -11,31 +12,37 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitMessage('');
-    try {
-      // Simulate form submission - REPLACE WITH YOUR ACTUAL SUBMISSION LOGIC
-      await new Promise(resolve => setTimeout(resolve, 1500)); 
-      setSubmitMessage('Thank you! Your message has been sent.');
-      setFormData({ name: '', email: '', message: '' }); 
-    } catch (error) {
-      console.error("Form submission error:", error); 
-      setSubmitMessage('Sorry, something went wrong. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
+
+    const serviceID = 'service_03c6roq';
+    const templateID = 'template_Ifes7rn';
+    const publicKey = 'vdaa30GBhKUreCS7A';
+
+    emailjs.send(serviceID, templateID, formData, publicKey)
+      .then(() => {
+        setSubmitMessage('✅ Thank you! Your message has been sent.');
+        setFormData({ name: '', email: '', message: '' });
+      })
+      .catch((error) => {
+        console.error("EmailJS error:", error);
+        setSubmitMessage('❌ Sorry, something went wrong. Please try again.');
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   return (
-    <Element name="contact" className="section contact-section-react"> {/* Added specific class */}
+    <Element name="contact" className="section contact-section-react">
       <h2>Get In Touch</h2>
-      <p className="contact-intro-react"> {/* Added specific class */}
+      <p className="contact-intro-react">
         Have a project in mind or just want to say hi? Feel free to reach out!
       </p>
-      <form className="contact-form-react" onSubmit={handleSubmit}> {/* Added specific class */}
-        <div className="form-group-react"> {/* Added specific class */}
+      <form className="contact-form-react" onSubmit={handleSubmit}>
+        <div className="form-group-react">
           <label htmlFor="name">Name</label>
           <input 
             type="text" 
@@ -68,12 +75,12 @@ const Contact = () => {
             required
           ></textarea>
         </div>
-        <button type="submit" className="btn btn-primary contact-submit-btn-react" disabled={isSubmitting}> {/* Added specific class */}
+        <button type="submit" className="btn btn-primary contact-submit-btn-react" disabled={isSubmitting}>
           {isSubmitting ? 'Sending...' : 'Send Message'}
         </button>
-        {submitMessage && <p className={`submit-message-react ${submitMessage.includes('Sorry') ? 'error' : 'success'}`}>{submitMessage}</p>} {/* Added specific class */}
+        {submitMessage && <p className={`submit-message-react ${submitMessage.includes('Sorry') ? 'error' : 'success'}`}>{submitMessage}</p>}
       </form>
-      <div className="contact-details-react"> {/* Added specific class */}
+      <div className="contact-details-react">
         <p>Email: <a href="mailto:diwakarshaw0304@gmail.com">diwakarshaw0304@gmail.com</a></p>
       </div>
     </Element>
